@@ -1,25 +1,35 @@
 # © 2017 Chris Greencorn
 
 #!/bin/bash
+
+# Make sure some basic tools are installed if not already
+in-target apt-get install -y curl git vim cmake build-essential ufw && \
+
+# Alter apt sources list to include contrib, nonfree, sid (unstable), oldstable, kali
+
 cd /target/etc/apt/ && \
 	rm sources.list && \
-	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sources.list && \
-		# Adds Contrib, Nonfree, Sid (Unstable), Oldstable, Kali
+	in-target wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sources.list /etc/apt/sources.list && \
 
-# Update sources, system, packages
+# Supply pubkeys for apt keyring [Kali mainly]
+in-target apt-key 
+
+# Update apt sources, upgrade OS, & update packages
 in-target apt-get update && in-target apt-get -y upgrade && in-target apt-get -y dist-upgrade && \ 
 
 # Install sudo and escalate privileges for user 'chris'
 in-target apt-get -y install sudo && \
 	cd /target/etc/; \
 		rm sudoers
-		wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sudoers && \
+		in-target wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sudoers /etc/sudoers && \
 
 # Back home
 cd /target/ && \
 
-# Make sure basic tools are installed if not already
-in-target apt-get install -y curl git vim cmake build-essential && \
+# Configure Git
+in-target mkdir ~/Git && \
+	in-target git config --global user.name "Chris Greencorn" && \
+	in-target git config --global user.emaill "chrisgreencorn@gmail.com" && \
 
 # Execute software suite installation script
 cd /target/tmp/ && \
@@ -29,3 +39,7 @@ cd /target/tmp/ && \
 		. config_and_dotfile.sh && \
 	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/network.sh && \
 		. network.sh
+
+
+# Bye
+cd /target/

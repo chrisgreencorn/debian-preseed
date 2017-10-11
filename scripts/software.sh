@@ -10,7 +10,7 @@ in-target apt-get install -y gis-data gis-devel gis-gps gis-osm gis-remotesensin
 
 # Install ArcheOS software - Can't find a pubkey that works, so doing it the hard way
 
-## From Stable repos
+## From (stable) repos
 in-target apt-get install -y blender meshlab whitedune invesalius && \ # 3D
 	gpsbabel && \ # GPS
 	librecad && \ # CAD
@@ -19,16 +19,16 @@ in-target apt-get install -y blender meshlab whitedune invesalius && \ # 3D
 	bluefish icedove iceweasel mutt && \ # Internet
 	ffmpeg ncmpcpp mpd audacious beets vlc && \ #Media
 	geany libreoffice libreoffice-sdbc-postgresql && \ # Office & Dev
-	bundlersfm* cmvspmvs* libvlfeat-utils* micmac* && \ # Photogrammetry/SfM
+	micmac* && \ # Photogrammetry/SfM
 	texmaker texlive-fonts-extra jabref ipe scribus lyx pandoc && \ # Publishing
 	marble marble-plugins r-base && \ # Science/Data Analysis
 	fileroller less && \ # Utilities
 	
-## From Oldstable repos
-# libvlfeat0 # ArcheOS Photogrammetry
+## From (oldstable) repos
+# in-target apt-get install -t oldrelease libvlfeat0 # ArcheOS Photogrammetry ??
 	
-## From Unstable repos
-in-target cura && \ # ArcheOS Hardware
+## From (unstable) repos
+in-target apt-get install -t unstable cura && \ # ArcheOS Hardware
 
 ## From .deb
 in-target dpkg --install tellervo.xx.xx all.deb && \ # Dendrochronology App in ArcheOS
@@ -37,15 +37,28 @@ in-target dpkg --install https://download1.rstudio.org/rstudio-xenial-1.1.383-am
 
 ## From source
 # in-target *cloudcompare* && \ # Point Cloud Comparison, ArcheOS 3D
+### Python Photogrammetry Toolbox (Details on how to extract so that everything is in $PATH seen in Github dir [https://github.com/archeos/ppt-gui/tree/master/ppt-gui-package/])
+cd /target/tmp/ && \
+	in-target wget http://www.museidironzone.it/archeos/ppt-gui/osm-bundler_64bit.tar.gz /tmp/ppt-gui.tar.gz && \
+	in-target tar -xzf ppt-gui.tar.gz
+	# Move files
+
+# From Git
+in-target mkdir ~/Git && cd ~/Git && \
+	# BundlerSFM
+	in-target git clone https://github.com/snavely/bundler_sfm.git
+	# CMVS-PMVS
+	in-target git clone https://github.com/pmoulon/CMVS-PMVS.git
+	# (Lib)VLFeat
+	in-target git clone https://github.com/vlfeat/vlfeat.git
+	# SfM Toolkit
+	# in-target git clone https://github.com/dddExperiments/SFMToolkit.git ** DEPENDENCIES ** 
+	
 
 # Kali Linux
 ## https://blog.romaingre.net/2014/05/add-kali-repository-on-debian/
 ## https://www.blackmoreops.com/2013/10/30/add-official-kali-linux-repositories/
 in-target apt-get install -y kali-linux-all/kali && \ # From Kali repo
-
-# Install zsh and make default shell 
-in-target apt-install zsh && in-target chsh -s /bin/zsh && \
-
 
 # Some more to add
 # 	gramps
