@@ -12,7 +12,7 @@ cd /target/etc/apt/ && \
 	in-target wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sources.list -0 /etc/apt/sources.list && \
 
 # Supply pubkeys for apt keyring [Kali mainly]
-in-target apt-key 
+in-target apt-key **
 
 # Update apt sources, upgrade OS, & update packages
 in-target apt-get update && in-target apt-get -y upgrade && in-target apt-get -y dist-upgrade && \ 
