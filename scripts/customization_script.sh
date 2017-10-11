@@ -9,7 +9,7 @@ in-target apt-get install -y curl git vim cmake build-essential ufw && \
 
 cd /target/etc/apt/ && \
 	rm sources.list && \
-	in-target wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sources.list /etc/apt/sources.list && \
+	in-target wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sources.list -0 /etc/apt/sources.list && \
 
 # Supply pubkeys for apt keyring [Kali mainly]
 in-target apt-key 
@@ -21,7 +21,7 @@ in-target apt-get update && in-target apt-get -y upgrade && in-target apt-get -y
 in-target apt-get -y install sudo && \
 	cd /target/etc/; \
 		rm sudoers
-		in-target wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sudoers /etc/sudoers && \
+		in-target wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sudoers -0 /etc/sudoers && \
 
 # Back home
 cd /target/ && \
@@ -33,12 +33,12 @@ in-target mkdir ~/Git && \
 
 # Execute software suite installation script
 cd /target/tmp/ && \
-	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/software.sh && \
-		. software.sh && \
-	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/config-and-dotfile.sh && \
-		. config_and_dotfile.sh && \
-	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/network.sh && \
-		. network.sh
+	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/software.sh -0 && \
+		/bin/bash software.sh && \
+	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/config-and-dotfile.sh -0 && \
+		/bin/bash config_and_dotfile.sh && \
+	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/network.sh -0 && \
+		/bin/bash network.sh
 
 
 # Bye
