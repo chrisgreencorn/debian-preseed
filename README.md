@@ -26,8 +26,9 @@ This particular preseed takes inspiration from a few variations on Debian:
 - [ArcheOS](http://www.archeos.eu/): A currently dormant Debian-based distro (pretty well straight Debian XFCE + some extra repos) centred around tools useful in archaeology and a variety of geophysical professions. I haven't been able to find a functional GPG key for apt so I've had to work around that and pull from a few different repos, clone from git, use .DEBs, or compile from source, where possible using the former three because I'm not really familiar with the maintenance of packages built from source yet. 
 - [Debian "Pure Blends"](https://www.debian.org/blends/):
   - [GIS](https://www.debian.org/blends/gis/): This Debian blend fills a sizeable gap that the absence of functional ArcheOS repos leaves - a comprehensive suite of geophysical applications. There was a lot of overlap between the ArcheOS-GIS metapackage and these GIS Blend metapackages, so I just elected to use them instead. 
-  - [Debian Edu](https://wiki.debian.org/DebianEdu/): More pulling random packages that I find useful than any whole metapackage.
-  - More to come
+  - [Edu](https://wiki.debian.org/DebianEdu/): More pulling random packages that I find useful than any whole metapackage.
+  - [Multimedia](#)
+  - [Science](#)
 - [Kali Linux](https://www.kali.org/): I'm pretty damn paranoid about... well, everything. Pretty self-explanatory.
 
 ## Progress
