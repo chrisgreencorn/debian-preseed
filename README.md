@@ -52,6 +52,7 @@ Here I'll report plain-text what I've done. It's available in the commit history
 - October 11: Created repo, populated with basic scripts, and worked on `preseed.cfg`, `customization_script.sh`, and `software.sh`, mostly. `customization_script.sh` calls the others, which seemed to make the most sense to me - more isolation between major groups of actions means I can debug easier. I may condense or alternately explode them further later on.
 - October 12: Worked on `software.sh` and `customization_script.sh`. Left some direction in the comments in each file about where to take them. Wrote up the preliminary contents of this readme.
 - October 13: Rewrote preseed.cfg so that I didn't have to use in-target for everything (I hope). Trying to find the best way to properly indicate what I'm doing in the bash file comments but I haven't sorted out something foolproof yet.
+- October 14: Continued picking through packages for the software.sh script. Will attempt install at some point to pare down bloat.
 
 ## Long-term
 
