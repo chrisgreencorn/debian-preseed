@@ -3,7 +3,7 @@
 #!/bin/bash
 
 # Make sure some basic tools are installed if not already
-apt-get install -y curl git vim cmake build-essential gcc equivsufw rsync debian-goodies bash-completion command-not-found etherwake && \
+apt-get install -y curl git vim cmake build-essential gcc equivsufw rsync debian-goodies bash-completion command-not-found etherwake gnupg wicd wicd-curses && \
 
 # Alter apt sources list to include contrib, nonfree, sid (unstable), oldstable, kali
 
@@ -13,6 +13,10 @@ cd /etc/apt/ && \
 
 # Now make your Intel wifi card useable
 apt-get install firmware-iwlwifi
+cd /etc/wicd/ && rm wireless-settings.conf
+wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/keys/network.gpg 
+gpg --decrypt network.gpg --output wireless-settings.conf
+cd /
 
 # Update apt sources, upgrade OS, & update packages
 apt-get update && in-target apt-get -y upgrade && in-target apt-get -y dist-upgrade && apt-get autoclean
