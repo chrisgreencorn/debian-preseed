@@ -10,8 +10,7 @@
 
 ## Ruby
 
-## Java
-apt-get install -y \
+apt-get install -y \ #Java
 	 java-common default-jre deault-java plugin
 
 #######################################################################
@@ -25,34 +24,34 @@ apt-get install -y \
 ## From Debian Stable Repos ##
 ##############################
 
-apt-get install -y \
-	blender meshlab whitedune invesalius # 3D
-apt-get install -y \
-	gpsbabel # GPS
-apt-get install -y \
-	librecad # CAD
-apt-get install -y \
-	pgadmin3 phpadmin postgresql postgis sqlite3 sqlitebrowser spatialite-bin # DBs
-apt-get install -y \
-	darktable gimp gimp-lensfun gimp-plugin-registry geeqie imagej inkscape shutter python-lxml  # Images
-apt-get install -y \
-	bluefish icedove iceweasel # Internet
-apt-get install -y \
-	geany libreoffice libreoffice-sdbc-postgresql # Office & Dev
-apt-get install -y \
-	micmac* \ # Photogrammetry/SfM
-apt-get install -y \
-	texmaker texlive-fonts-extra jabref ipe scribus lyx pandoc # Publishing
-apt-get install -y \
-	marble marble-plugins # Science
-apt-get install -y \
-	fileroller less # Utilities
+apt-get install -y \ # 3D
+	blender meshlab whitedune invesalius
+apt-get install -y \ # GPS
+	gpsbabel
+apt-get install -y \ # CAD
+	librecad 
+apt-get install -y \ # Databases
+	pgadmin3 phpadmin postgresql postgis sqlite3 sqlitebrowser spatialite-bin
+apt-get install -y \ # Image Processing
+	darktable gimp gimp-lensfun gimp-plugin-registry geeqie imagej inkscape shutter python-lxml
+apt-get install -y \ # Internet
+	bluefish icedove iceweasel
+apt-get install -y \ # Office and Development
+	geany libreoffice libreoffice-sdbc-postgresql
+apt-get install -y \ # Photogrammetry & Structure from Motion
+	micmac* \ 
+apt-get install -y \ # Publishing
+	texmaker texlive-fonts-extra jabref ipe scribus lyx pandoc
+apt-get install -y \ # Science
+	marble marble-plugins
+apt-get install -y \ Utilities
+	fileroller less
 
 #################################	
 ## From Debian Oldstable Repos ##
 #################################
 
-apt-get install -t oldstable libvlfeat0
+apt-get install -t oldstable libvlfeat0 # Dependency for Python Photogrammetry Toolkit
 
 ###############	
 ## From .deb ##
@@ -94,7 +93,7 @@ cd /home/users/chris/Git && \
 	# git clone https://github.com/dddExperiments/SFMToolkit.git ** DEPENDENCIES ** 
 
 ### Cura 3D Printer Slicer
-	git clone https://github.com/Ultimaker/cura-build.git &&
+	git clone https://github.com/Ultimaker/cura-build.git
 
 ########################################################################################################################################################################
 
@@ -163,6 +162,15 @@ apt-get install -y \
 	freecad \ # 3D CAD
 	mutt procmail \ # CLI Mail
 	hugin libimage-exiftool-perl \ # Image Processing
+	gramps \ # Genealogy
+	r-cran-rjags r-cran-coda \ # Bayesian & MCMC stats for R
+	mayavi \ # 2D & 3D data viz
+	maxima gnuplot gnuplot-doc gnuplot-qt gnuplot-x11 maxima-share maxima-doc maxima-emacs xmaxima wish \ # CLI math
+	libsndfile1 # reading and writing sampled audio to file - dep for ChucK
+	yacc lex # depends for ChucK
+	keepnote # OneNote replacement	
+	gnucash gnucash-docs dbus dbus-x11 python-gnucash # financial
+
 
 ###############
 ## From .deb ##
@@ -172,49 +180,73 @@ apt-get install -y \
 
 dpkg --install https://download1.rstudio.org/rstudio-xenial-1.1.383-amd64.deb && \ #RStudio
 
+
 #################
 ## From source ##
 #################
 
 # Atom editor
 
-mkdir /home/users/chris/atom && cd /home/users/chris/atom/ 
-wget https://github.com/atom/atom/releases/download/v1.21.1/atom-amd64.deb
-dpkg --install atom-amd64.deb ## Atom Editor
+mkdir /home/users/chris/atom
+wget https://github.com/atom/atom/releases/download/v1.21.1/atom-amd64.deb /home/users/chris/.atom/atom-amd64-v1.21.1.deb
+dpkg --install atom-amd64-v1.21.1.deb ## Atom Editor
+
+# RSPython
+
+ wget http://www.omegahat.net/RSPython/RSPython_0.7-1.tar.gz /tmp/RSPython.tar.gz
+ R CMD INSTALL --clean /tmp/RSPython.tar.gz
+
+# Processing viz language
+
+wget http://download.processing.org/processing-3.3.6-linux64.tgz /tmp/processing-3.3.6-linux64.tgz
+tar -xzf processing-3.3.6-linux64.tgz /home/users/chris/.executables/processing
+echo "alias processing='. /home/users/chris/.executables/processing/processing" >> /home/users/chris/.bashrc
+
+# ChucK sound manipulation language
+
+wget http://chuck.cs.princeton.edu/release/files/chuck-1.3.5.2.tgz /tmp/chuck.tgz
+tar -xvzf /tmp/chuck.tgz 
+cd /tmp/chuck/src/
+make linux-alsa #linux-jack if you're using jack
+make install
+cd /
 
 #################
 ## From Github ##
-#################
- 
-# rbenv 
+################# 
 
-git clone https://github.com/rbenv/rbenv.git ~/.rbenv && \
-	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile && \
+
+# rbenv
+git clone https://github.com/rbenv/rbenv.git /home/users/chris/.rbenv && \ # rbenv
+	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> /home/users/chris/.bash_profile && \
 	# preseed init prompts?
 	/home/users/chris/.rbenv/bin/rbenv init
 	# verify
-	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
-	# install ruby-build
-	git clone https://github.com/rbenv/ruby-build.git && PREFIX=/usr/local ./ruby-build/install.sh
+	curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash	
 	
-########################################################################################################################################################################
+# ruby-build	
+git clone https://github.com/rbenv/ruby-build.git /home/users/chris/.rbenv/ruby-build && PREFIX=/usr/local ./ruby-build/install.sh
+	
+#PyCAM
+git clone https://github.com/SebKuzminsky/pycam.git /home/users/chris/.pycam
+echo "alias pycam='python /home/users/chris/.pycam/scripts/pycam'" >> /home/users/chris/.bashrc
 
 
 
-# Some more to add
-# 	gramps
-# 	[jsesh or openglyph]
-# 	r/splus python interface
-# 	gutenbrowser
-# 	keepnote
-# caelinux
-# 	gnuplot
-# 	gnucash
-# 	frysk
-# 	maxima
-# 	mayavi
-# 	mercurial
-# 	subversion
-# 	emacs
-# 	ess
-# 	jags
+
+################
+## Java .JARs ##
+################
+
+# JSesh Hieroglyphs
+
+wget https://downloads.sourceforge.net/project/jsesh/6.5.5/JSesh-install-6.5.5.jar /home/users/chris/.jars/JSesh-install-5.5.5.jar
+
+
+
+
+#######################################################################################################################################################################
+
+# CAELinux 
+# https://distrowatch.com/images/screenshots/cae-2010.png
+# https://distrowatch.com/images/screenshots/cae-2011.png
