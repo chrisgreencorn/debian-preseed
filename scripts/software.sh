@@ -39,8 +39,8 @@ apt-get install -y \
 	bluefish icedove iceweasel # Internet
 apt-get install -y \
 	geany libreoffice libreoffice-sdbc-postgresql # Office & Dev
-apt-get install -y \
-	micmac* \ # Photogrammetry/SfM
+# apt-get install -y \
+#	micmac* \ # Photogrammetry/SfM
 apt-get install -y \
 	texmaker texlive-fonts-extra jabref ipe scribus lyx pandoc # Publishing
 apt-get install -y \
@@ -58,8 +58,8 @@ apt-get install -t oldstable libvlfeat0
 ## From .deb ##
 ###############
 
-mkdir /usr/bin/tellervo && cd /usr/bin/tellervo
-wget http://www.tellervo.org/download/binaries/desktop/1.3.0/Java/tellervo-1.3.0.jar # Tellervo - Dendrochronology
+mkdir /usr/bin/tellervo
+wget http://www.tellervo.org/download/binaries/desktop/1.3.0/Java/tellervo-1.3.0.jar -O /usr/bin/tellervo/tellervo.jar # Tellervo - Dendrochronology
 
 #################
 ## From source ##
@@ -69,7 +69,7 @@ wget http://www.tellervo.org/download/binaries/desktop/1.3.0/Java/tellervo-1.3.0
 
 ## PPTGUI
 cd /tmp/ && \
-	wget http://www.museidironzone.it/archeos/ppt-gui/osm-bundler_64bit.tar.gz /tmp/ppt-gui.tar.gz && \
+	wget http://www.museidironzone.it/archeos/ppt-gui/osm-bundler_64bit.tar.gz -O /tmp/ppt-gui.tar.gz && \
 	tar -xzf ppt-gui.tar.gz && \
 	# Move files
 
@@ -95,6 +95,8 @@ cd /home/users/chris/Git && \
 
 ### Cura 3D Printer Slicer
 	git clone https://github.com/Ultimaker/cura-build.git &&
+
+cd /home/users/chris/
 
 ########################################################################################################################################################################
 
@@ -170,7 +172,7 @@ apt-get install -y \
 
 # Rstudio
 
-dpkg --install https://download1.rstudio.org/rstudio-xenial-1.1.383-amd64.deb && \ #RStudio
+dpkg --install https://download1.rstudio.org/rstudio-xenial-1.1.383-amd64.deb  #RStudio
 
 #################
 ## From source ##
@@ -178,8 +180,8 @@ dpkg --install https://download1.rstudio.org/rstudio-xenial-1.1.383-amd64.deb &&
 
 # Atom editor
 
-mkdir /home/users/chris/atom && cd /home/users/chris/atom/ 
-wget https://github.com/atom/atom/releases/download/v1.21.1/atom-amd64.deb
+mkdir /home/users/chris/atom
+wget https://github.com/atom/atom/releases/download/v1.21.1/atom-amd64.deb -O /home/users/chris/atom/atom-amd64.deb
 dpkg --install atom-amd64.deb ## Atom Editor
 
 #################
