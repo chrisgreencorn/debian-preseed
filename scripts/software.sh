@@ -6,11 +6,26 @@
 # - games, mostly
 
 # Install Languages
-#ruby, rbenv, python3, php5, perl, java, js,
+#ruby, python3, php5, perl, java, js,
 
-apt-get install -y \ #Java
+apt-get install -y \ # Java
 	 java-common default-jre deault-java plugin
 
+apt-get install -y \ # Python
+	python python3 python-pip python3-pip
+
+apt-get install -y \ # Ruby
+	ruby-full # rbenv later
+
+apt-get install -y \ # Perl
+	perl perl-doc 
+
+apt-get install -y \ # NodeJS & NVM
+	curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh -o /tmp/install_nvm.sh
+	bash /tmp/install_nvm.sh
+	source ~/.profile
+	nvm install 8.9.1 #current LTS a/o Nov 25 2017
+	
 #######################################################################
 
 
@@ -22,7 +37,6 @@ apt-get install -y \ #Java
 ## From Debian Stable Repos ##
 ##############################
 
-<<<<<<< HEAD
 apt-get install -y \
 	blender meshlab whitedune invesalius # 3D
 apt-get install -y \
@@ -68,7 +82,6 @@ apt-get install -y \ # Science
 	marble marble-plugins
 apt-get install -y \ Utilities
 	fileroller less
->>>>>>> 746b4ba648825cadfe58328c71fe9d47054f5a10
 
 #################################	
 ## From Debian Oldstable Repos ##
@@ -213,7 +226,7 @@ dpkg --install https://download1.rstudio.org/rstudio-xenial-1.1.383-amd64.deb  #
 # Atom editor
 
 mkdir /home/users/chris/atom
-<<<<<<< HEAD
+
 wget https://github.com/atom/atom/releases/download/v1.21.1/atom-amd64.deb -O /home/users/chris/atom/atom-amd64.deb
 dpkg --install atom-amd64.deb ## Atom Editor
 =======
@@ -239,7 +252,6 @@ cd /tmp/chuck/src/
 make linux-alsa #linux-jack if you're using jack
 make install
 cd /
->>>>>>> 746b4ba648825cadfe58328c71fe9d47054f5a10
 
 #################
 ## From Github ##
@@ -277,7 +289,6 @@ wget https://downloads.sourceforge.net/project/jsesh/6.5.5/JSesh-install-6.5.5.j
 
 #######################################################################################################################################################################
 
-<<<<<<< HEAD
 # Some more to add
 # 	gramps
 # 	[jsesh or openglyph]
@@ -299,4 +310,3 @@ wget https://downloads.sourceforge.net/project/jsesh/6.5.5/JSesh-install-6.5.5.j
 # CAELinux 
 # https://distrowatch.com/images/screenshots/cae-2010.png
 # https://distrowatch.com/images/screenshots/cae-2011.png
->>>>>>> 746b4ba648825cadfe58328c71fe9d47054f5a10

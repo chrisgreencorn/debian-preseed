@@ -3,7 +3,7 @@
 #!/bin/bash
 
 # Make sure some basic tools are installed if not already
-apt-get install -y curl git vim cmake build-essential gcc equivsufw rsync debian-goodies bash-completion command-not-found etherwake gnupg wicd wicd-curses
+apt-get install -y curl git vim cmake build-essential libssl-dev gcc equivsufw rsync debian-goodies bash-completion command-not-found etherwake gnupg wicd wicd-curses
 
 # Alter apt sources list to include contrib, nonfree, sid (unstable), oldstable, kali
 
