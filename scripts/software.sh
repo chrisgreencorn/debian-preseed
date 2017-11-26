@@ -6,9 +6,7 @@
 # - games, mostly
 
 # Install Languages
-#ruby, rbenv, python3, php5, perl, java, js, 
-
-## Ruby
+#ruby, rbenv, python3, php5, perl, java, js,
 
 apt-get install -y \ #Java
 	 java-common default-jre deault-java plugin
