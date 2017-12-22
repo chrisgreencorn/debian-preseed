@@ -12,14 +12,15 @@ cd /etc/apt/ && \
 	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sources.list /etc/apt/sources.list
 
 # Now make your Intel wifi card useable
+apt-get update
 apt-get install firmware-iwlwifi
 cd /etc/wicd/ && rm wireless-settings.conf
 wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/keys/network.gpg 
 gpg --decrypt network.gpg --output wireless-settings.conf
 cd /
 
-# Update apt sources, upgrade OS, & update packages
-apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade && apt-get autoclean
+# upgrade OS, & update packages
+apt-get -y upgrade && apt-get -y dist-upgrade && apt-get autoclean
 
 # Install sudo and escalate privileges for user 'chris'
 apt-get -y install sudo && \
