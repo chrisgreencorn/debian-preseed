@@ -9,13 +9,13 @@ apt-get install -y curl git vim cmake build-essential libssl-dev gcc equivsufw r
 
 cd /etc/apt/ && \
 	rm sources.list && \
-	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sources.list /etc/apt/sources.list
+	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/config/sources.list /etc/apt/sources.list
 
 # Now make your Intel wifi card useable
 apt-get update
 apt-get install firmware-iwlwifi
 cd /etc/wicd/ && rm wireless-settings.conf
-wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/keys/network.gpg 
+wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/config/network.gpg 
 gpg --decrypt network.gpg --output wireless-settings.conf
 cd /
 
@@ -26,7 +26,7 @@ apt-get -y upgrade && apt-get -y dist-upgrade && apt-get autoclean
 apt-get -y install sudo && \
 	cd /etc/ && \
 		rm sudoers
-		wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/sudoers /etc/sudoers && \
+		wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/config/sudoers /etc/sudoers && \
 
 # Back home
 cd /home/users/chris/
@@ -39,13 +39,13 @@ mkdir /home/users/chris/Git && \
 # Execute software suite installation script
 cd /tmp/ && \
 	# Install a pile of software
-	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/software.sh && \
+	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/scripts/software.sh && \
 		/bin/bash software.sh && \
 	# Place the appropriate config files
-	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/config-and-dotfile.sh && \
+	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/scripts/config_and_dotfile.sh && \
 		/bin/bash config_and_dotfile.sh && \
 	#  Supply network preferences - Network Manager or Wicd?
-	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/master/network.sh && \
+	wget https://raw.githubusercontent.com/chrisgreencorn/debian-preseed/scripts/network.sh && \
 		/bin/bash network.sh
 
 
