@@ -43,7 +43,7 @@ This particular preseed takes inspiration from a few variations on Debian:
   - [Edu](https://wiki.debian.org/DebianEdu/): More pulling random packages that I find useful than any whole metapackage.
   - [Multimedia](#):
   - [Science](#):
-- [Kali Linux](https://www.kali.org/): I'm pretty damn paranoid about... well, everything. Pretty self-explanatory.
+- [Kali Linux](https://www.kali.org/)
 
 ## Progress
 
